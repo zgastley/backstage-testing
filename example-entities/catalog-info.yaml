@@ -28,7 +28,7 @@ metadata:
   annotations:
     jira/project-key: PESS
     jira/custom-jql: '"app repo[labels]" = "wendys/digital-engineering/core-services/crm-gateway-service"'
-    argocd/app-selector: chart=test
+    # argocd/app-selector: chart=test
 spec:
   type: grpc
   lifecycle: experimental
