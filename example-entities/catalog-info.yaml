@@ -24,7 +24,7 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
-  name: example-grpc-api
+  name: crm-gateway-service
   annotations:
     jira/project-key: PESS
     jira/custom-jql: '"app repo[labels]" = "wendys/digital-engineering/core-services/crm-gateway-service"'
