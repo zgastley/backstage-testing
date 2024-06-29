@@ -44,3 +44,51 @@ spec:
     message ExampleMessage {
       string example = 1;
     };
+---
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-api
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: argocd
+  annotations:
+    jira/project-key: PESS
+    jira/custom-jql: '"app repo[labels]" = "wendys/digital-engineering/core-services/crm-gateway-service"'
+    argocd/app-selector: chart=argocd
+    argo-workflows.cnoe.io/label-selector: env=dev,my=label
+    argo-workflows/cluster-name: infra-prd
+    backstage.io/kubernetes-id: argocd
+
+spec:
+  type: grpc
+  lifecycle: experimental
+  owner: guests
+  system: examples
+  definition: |
+    syntax = "proto3";
+
+    service Exampler {
+      rpc Example (ExampleMessage) returns (ExampleMessage) {};
+    }
+
+    message ExampleMessage {
+      string example = 1;
+    };
+---
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-component
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: example-service
+  annotations:
+    jira/project-key: PESS
+    jira/custom-jql: '"app repo[labels]" = "wendys/digital-engineering/core-services/crm-gateway-service"'
+    argocd/app-selector: chart=argocd
+    argo-workflows.cnoe.io/label-selector: env=dev,my=label
+    argo-workflows/cluster-name: infra-prd
+    backstage.io/kubernetes-id: argocd
+spec:
+  type: service
+  lifecycle: experimental
+  owner: guests
+  system: examples
+  providesApis: [example-grpc-api]
